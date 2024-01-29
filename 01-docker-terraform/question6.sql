@@ -61,6 +61,8 @@ final as (
 
     order by 2 desc
 
+    limit 1
+
 )
 
 select * from final
