@@ -1,4 +1,4 @@
-keys/
+keys/*.json
 
 # Local .terraform directories
 **/.terraform/*
