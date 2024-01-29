@@ -1,3 +1,8 @@
+variable "credentials" {
+  description = "my credentials"
+  default     = "./keys/my-creds.json"
+}
+
 variable "project" {
   description = "project"
   default     = "even-ally-412601"
