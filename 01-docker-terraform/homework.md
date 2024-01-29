@@ -109,7 +109,7 @@ Update `ingest_data.py` to handle different column names in green taxi trips dat
 Rebuild the image:
 
 ```bash
-docker build -t taxi_ingest:v001 .
+$ docker build -t taxi_ingest:v001 .
 ```
 
 Start up containers:
