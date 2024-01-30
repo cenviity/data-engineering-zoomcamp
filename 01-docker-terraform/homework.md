@@ -104,7 +104,7 @@ Download this data and put it into Postgres (with jupyter notebooks or with a pi
 <details>
     <summary>Show / hide</summary>
 
-Update `ingest_data.py` to handle different column names in green taxi trips data (see commit [5272f83](../../../commit/5272f83)).
+Update `ingest_data.py` to handle different column names in green taxi trips data – see commit [5272f83](https://github.com/cenviity/data-engineering-zoomcamp-2024/commit/5272f83).
 
 Rebuild the image:
 
@@ -133,7 +133,7 @@ $ docker run -it \
     --url="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz"
 ```
 
-Taxi zones data has already been loaded earlier in the commit [7bca57e](../../../commit/7bca57e).
+Taxi zones data has already been loaded earlier – see commit [7bca57e](https://github.com/cenviity/data-engineering-zoomcamp-2024/commit/7bca57e).
 </details>
 
 
