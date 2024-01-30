@@ -106,21 +106,18 @@ Download this data and put it into Postgres (with jupyter notebooks or with a pi
 
 Update `ingest_data.py` to handle different column names in green taxi trips data – see commit [5272f83](https://github.com/cenviity/data-engineering-zoomcamp-2024/commit/5272f83).
 
-Rebuild the image:
 
 ```bash
+# Navigate from project root directory to folder containing `docker-compose.yaml`
+$ cd 01-docker-terraform/2_docker_sql
+
+# Rebuild image
 $ docker build -t taxi_ingest:v001 .
-```
 
-Start up containers:
-
-```bash
+# Start up containers
 $ docker compose up -d
-```
 
-Run ingest script to load green taxi trips data into database:
-
-```bash
+# Run ingest script to load green taxi trips data into database
 $ docker run -it \
     --network=2_docker_sql_default \
     taxi_ingest:v001 \
