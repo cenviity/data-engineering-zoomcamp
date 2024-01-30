@@ -12,19 +12,13 @@ trips as (
 
 ),
 
-pickup_zones as (
+zones as (
 
     select
         "LocationID" as location_id,
         "Zone" as zone
 
     from zones
-
-),
-
-dropoff_zones as (
-
-    select * from pickup_zones
 
 ),
 
@@ -38,10 +32,10 @@ joined as (
 
     from trips
 
-    left join pickup_zones
+    left join zones as pickup_zones
         on trips.pickup_location_id = pickup_zones.location_id
 
-    left join dropoff_zones
+    left join zones as dropoff_zones
         on trips.dropoff_location_id = dropoff_zones.location_id
 
     where
