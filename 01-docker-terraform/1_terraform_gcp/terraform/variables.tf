@@ -1,20 +1,20 @@
 variable "credentials" {
-  description = "my credentials"
+  description = "My credentials"
   default     = "./keys/my-creds.json"
 }
 
 variable "project" {
-  description = "project"
+  description = "Project"
   default     = "even-ally-412601"
 }
 
 variable "region" {
-  description = "region"
+  description = "Region"
   default     = "us-central1"
 }
 
 variable "location" {
-  description = "project location"
+  description = "Project location"
   default     = "US"
 }
 
