@@ -10,9 +10,18 @@ terraform {
 }
 
 provider "google" {
-  project = var.project_id
-  region  = var.region
-  zone    = var.zone
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
+  credentials = var.credentials
+}
+
+resource "google_storage_bucket" "mage-zoomcamp" {
+  name                        = "mage-zoomcamp-vincent-yim"
+  location                    = "US"
+  storage_class               = "STANDARD"
+  public_access_prevention    = "enforced"
+  uniform_bucket_level_access = true
 }
 
 # #############################################
@@ -59,7 +68,6 @@ resource "google_project_service" "sqladmin" {
   service            = "sqladmin.googleapis.com"
   disable_on_destroy = false
 }
-
 
 # Create the Cloud Run service
 resource "google_cloud_run_service" "run_service" {

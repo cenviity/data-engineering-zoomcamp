@@ -1,3 +1,8 @@
+variable "credentials" {
+  description = "My credentials"
+  default     = "./keys/my-creds.json"
+}
+
 variable "app_name" {
   type        = string
   description = "Application Name"
