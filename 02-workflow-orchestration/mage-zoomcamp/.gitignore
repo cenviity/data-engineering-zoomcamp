@@ -172,3 +172,5 @@ scratch*
 magic-zoomcamp
 *.json
 
+# Terraform templates from Mage
+mage-ai-terraform-templates
