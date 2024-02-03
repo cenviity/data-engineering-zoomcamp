@@ -1,4 +1,19 @@
-blocks: []
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_taxi_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_taxi_data
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -20,7 +35,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: null
+updated_at: '2024-02-04T00:55:44+00:00'
 uuid: green_taxi_etl
 variables_dir: /home/src/mage_data/green-taxi-etl
 widgets: []
