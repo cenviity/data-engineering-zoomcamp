@@ -35,9 +35,9 @@ def test_output(output, *args) -> None:
 
 @test
 def test_positive_passenger_count(output, *args) -> None:
-    assert (output["passenger_count"] > 0).all()
+    assert (output["passenger_count"] > 0).all(), "Non-positive value found in `passenger_count` column"
 
 
 @test
 def test_positive_trip_distance(output, *args) -> None:
-    assert (output["trip_distance"] > 0).all()
+    assert (output["trip_distance"] > 0).all(), "Non-positive value found in `trip_distance` column"
