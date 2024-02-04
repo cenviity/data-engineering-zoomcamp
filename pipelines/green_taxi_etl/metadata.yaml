@@ -73,6 +73,7 @@ blocks:
       path: transformers/test_taxi_data.py
   downstream_blocks:
   - export_data_to_postgres
+  - export_data_to_gcp
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -114,6 +115,26 @@ blocks:
   upstream_blocks:
   - test_taxi_data
   uuid: export_data_to_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    export_write_policy: replace
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_data_to_gcp
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - test_taxi_data
+  uuid: export_data_to_gcp
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -135,7 +156,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-04 09:57:57'
+updated_at: '2024-02-04 12:05:56'
 uuid: green_taxi_etl
 variables_dir: /home/src/mage_data/green-taxi-etl
 widgets: []
