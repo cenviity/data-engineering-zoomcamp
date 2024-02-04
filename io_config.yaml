@@ -134,6 +134,7 @@ default:
   WEAVIATE_COLLECTION: collectionn_name
 
 dev:
+  GOOGLE_SERVICE_ACC_KEY_FILEPATH: /home/src/personal-gcp.json
   POSTGRES_CONNECT_TIMEOUT: 10
   POSTGRES_DBNAME: {{ env_var("POSTGRES_DBNAME") }}
   POSTGRES_SCHEMA: mage
