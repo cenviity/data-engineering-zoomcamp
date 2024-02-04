@@ -53,7 +53,7 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - test_vendor_id_in_existing_values
+  - test_taxi_data
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -68,20 +68,22 @@ blocks:
   uuid: rename_columns
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: transformers/test_taxi_data.py
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: test_vendor_id_in_existing_values
+  name: test_taxi_data
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - rename_columns
-  uuid: test_vendor_id_in_existing_values
+  uuid: test_taxi_data
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -103,7 +105,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-04 09:28:10'
+updated_at: '2024-02-04 09:33:48'
 uuid: green_taxi_etl
 variables_dir: /home/src/mage_data/green-taxi-etl
 widgets: []

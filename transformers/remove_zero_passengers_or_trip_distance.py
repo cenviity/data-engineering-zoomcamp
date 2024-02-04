@@ -31,13 +31,3 @@ def test_output(output, *args) -> None:
     Template code for testing the output of the block.
     """
     assert output is not None, "The output is undefined"
-
-
-@test
-def test_positive_passenger_count(output, *args) -> None:
-    assert (output["passenger_count"] > 0).all(), "Non-positive value found in `passenger_count` column"
-
-
-@test
-def test_positive_trip_distance(output, *args) -> None:
-    assert (output["trip_distance"] > 0).all(), "Non-positive value found in `trip_distance` column"

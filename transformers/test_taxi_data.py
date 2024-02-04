@@ -32,4 +32,20 @@ def test_output(output, *args) -> None:
 
 @test
 def test_vendor_id_in_existing_values(output, *args) -> None:
-    assert output["vendor_id"].isin([1, 2]).all(), "Unexpected value(s) found in `vendor_id` column"
+    assert (
+        output["vendor_id"].isin([1, 2]).all()
+    ), "Unexpected value(s) found in `vendor_id` column"
+
+
+@test
+def test_positive_passenger_count(output, *args) -> None:
+    assert (
+        output["passenger_count"] > 0
+    ).all(), "Non-positive value found in `passenger_count` column"
+
+
+@test
+def test_positive_trip_distance(output, *args) -> None:
+    assert (
+        output["trip_distance"] > 0
+    ).all(), "Non-positive value found in `trip_distance` column"
