@@ -35,7 +35,8 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - rename_columns
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -48,6 +49,22 @@ blocks:
   upstream_blocks:
   - remove_zero_passengers_or_trip_distance
   uuid: add_lpep_pickup_date
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: rename_columns
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - add_lpep_pickup_date
+  uuid: rename_columns
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -69,7 +86,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-04 08:32:49'
+updated_at: '2024-02-04 09:04:01'
 uuid: green_taxi_etl
 variables_dir: /home/src/mage_data/green-taxi-etl
 widgets: []
