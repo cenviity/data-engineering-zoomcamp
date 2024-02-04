@@ -86,7 +86,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-04 09:04:01'
+updated_at: '2024-02-04 09:13:04'
 uuid: green_taxi_etl
 variables_dir: /home/src/mage_data/green-taxi-etl
 widgets: []

@@ -22,7 +22,8 @@ def transform(data, *args, **kwargs):
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    data["lpep_pickup_date"] = pandas.to_datetime(data["lpep_pickup_datetime"]).dt.normalize()
+    column_number = data.columns.get_loc("lpep_pickup_datetime") + 1
+    data.insert(column_number, "lpep_pickup_date", pandas.to_datetime(data["lpep_pickup_datetime"]).dt.normalize())
 
     return data
 
