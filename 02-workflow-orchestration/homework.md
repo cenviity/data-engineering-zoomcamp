@@ -37,6 +37,14 @@ Once the dataset is loaded, what's the shape of the data?
 * 544,898 rows x 20 columns
 * 133,744 rows x 20 columns
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **266,855 rows × 20 columns**, determined with the code [here](https://github.com/cenviity/green-taxi-etl/blob/main/data_loaders/load_taxi_data.py).
+</details>
+
 ## Question 2. Data Transformation
 
 Upon filtering the dataset where the passenger count is greater than 0 _and_ the trip distance is greater than zero, how many rows are left?
@@ -45,6 +53,14 @@ Upon filtering the dataset where the passenger count is greater than 0 _and_ the
 * 266,855 rows
 * 139,370 rows
 * 266,856 rows
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **139,370 rows**, determined with the code [here](https://github.com/cenviity/green-taxi-etl/blob/main/transformers/remove_zero_passengers_or_trip_distance.py).
+</details>
 
 ## Question 3. Data Transformation
 
@@ -55,6 +71,16 @@ Which of the following creates a new column `lpep_pickup_date` by converting `lp
 * `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date`
 * `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt().date()`
 
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date`, as shown in the code [here](https://github.com/cenviity/green-taxi-etl/blob/main/transformers/add_lpep_pickup_date.py#L26
+).
+</details>
+
 ## Question 4. Data Transformation
 
 What are the existing values of `VendorID` in the dataset?
@@ -63,6 +89,15 @@ What are the existing values of `VendorID` in the dataset?
 * 1 or 2
 * 1, 2, 3, 4
 * 1
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is `1 or 2`, determined with the code [here](https://github.com/cenviity/green-taxi-etl/blob/main/data_loaders/load_taxi_data.py#L48-L52
+) and [here](https://github.com/cenviity/green-taxi-etl/blob/main/transformers/test_taxi_data.py#L35-L40).
+</details>
 
 ## Question 5. Data Transformation
 
@@ -73,6 +108,20 @@ How many columns need to be renamed to snake case?
 * 2
 * 4
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is `4`, as shown in the code [here](https://github.com/cenviity/green-taxi-etl/blob/main/transformers/rename_columns.py#L24-L27).
+
+These are the columns that need renaming:
+* `VendorID`
+* `RatecodeID`
+* `PULocationID`
+* `DOLocationID`
+</details>
+
 ## Question 6. Data Exporting
 
 Once exported, how many partitions (folders) are present in Google Cloud?
@@ -81,6 +130,20 @@ Once exported, how many partitions (folders) are present in Google Cloud?
 * 56
 * 67
 * 108
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The closest answer is **96**, determined with the code [here](https://github.com/cenviity/green-taxi-etl/blob/main/data_loaders/count_lpep_pickup_date.sql), which gives a count of **95**.
+
+These are the columns that need renaming:
+* `VendorID`
+* `RatecodeID`
+* `PULocationID`
+* `DOLocationID`
+</details>
 
 ## Submitting the solutions
 
