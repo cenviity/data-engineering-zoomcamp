@@ -23,7 +23,7 @@ def transform(data, *args, **kwargs):
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
     column_number = data.columns.get_loc("lpep_pickup_datetime") + 1
-    data.insert(column_number, "lpep_pickup_date", pandas.to_datetime(data["lpep_pickup_datetime"]).dt.normalize())
+    data.insert(column_number, "lpep_pickup_date", data["lpep_pickup_datetime"].dt.date)
 
     return data
 
