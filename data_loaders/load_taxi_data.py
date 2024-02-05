@@ -1,4 +1,5 @@
 import pandas as pd
+from mage_ai.data_preparation.variable_manager import set_global_variable
 
 if "data_loader" not in globals():
     from mage_ai.data_preparation.decorators import data_loader
@@ -43,6 +44,12 @@ def load_data(*args, **kwargs):
 
     month_data = (get_trips_data(2020, month) for month in range(10, 13))
     df = pd.concat(month_data)
+
+    # Get existing values of `VendorID` and store in `kwargs` for testing later
+    unique_vendor_ids = df["VendorID"].unique().dropna().tolist()
+    set_global_variable(
+        kwargs.get("pipeline_uuid"), "unique_vendor_ids", str(unique_vendor_ids)
+    )
 
     return df
 

@@ -1,3 +1,5 @@
+import ast
+
 if "transformer" not in globals():
     from mage_ai.data_preparation.decorators import transformer
 if "test" not in globals():
@@ -31,9 +33,10 @@ def test_output(output, *args) -> None:
 
 
 @test
-def test_vendor_id_in_existing_values(output, *args) -> None:
+def test_vendor_id_in_existing_values(output, *args, **kwargs) -> None:
+    unique_vendor_ids = ast.literal_eval(kwargs.get("unique_vendor_ids"))
     assert (
-        output["vendor_id"].isin([1, 2]).all()
+        output["vendor_id"].isin(unique_vendor_ids).all()
     ), "Unexpected value(s) found in `vendor_id` column"
 
 
