@@ -102,7 +102,8 @@ blocks:
       test_taxi_data:
         table_name: ''
     use_raw_sql: false
-  downstream_blocks: []
+  downstream_blocks:
+  - count_lpep_pickup_date
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -115,6 +116,31 @@ blocks:
   upstream_blocks:
   - test_taxi_data
   uuid: export_data_to_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    data_provider_table: green_taxi
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: replace
+    limit: 0
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: count_lpep_pickup_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - export_data_to_postgres
+  uuid: count_lpep_pickup_date
 - all_upstream_blocks_executed: true
   color: null
   configuration:
@@ -156,7 +182,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-02-05 11:24:27'
+updated_at: '2024-02-05 11:55:42'
 uuid: green_taxi_etl
 variables:
   unique_vendor_ids: '[2, 1]'
