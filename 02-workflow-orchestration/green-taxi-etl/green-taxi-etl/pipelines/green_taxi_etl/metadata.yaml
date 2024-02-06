@@ -1,0 +1,190 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - remove_zero_passengers_or_trip_distance
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_taxi_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_taxi_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - add_lpep_pickup_date
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: remove_zero_passengers_or_trip_distance
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_taxi_data
+  uuid: remove_zero_passengers_or_trip_distance
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - rename_columns
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: add_lpep_pickup_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - remove_zero_passengers_or_trip_distance
+  uuid: add_lpep_pickup_date
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - test_taxi_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: rename_columns
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - add_lpep_pickup_date
+  uuid: rename_columns
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/test_taxi_data.py
+  downstream_blocks:
+  - export_data_to_postgres
+  - export_data_to_gcp
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: test_taxi_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - rename_columns
+  uuid: test_taxi_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    data_provider_table: green_taxi
+    dbt: {}
+    disable_query_preprocessing: false
+    dynamic: false
+    export_write_policy: replace
+    limit: 0
+    upstream_block_configuration:
+      test_taxi_data:
+        table_name: ''
+    use_raw_sql: false
+  downstream_blocks:
+  - count_lpep_pickup_date
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: export_data_to_postgres
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - test_taxi_data
+  uuid: export_data_to_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    data_provider_table: green_taxi
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: replace
+    limit: 0
+    use_raw_sql: true
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: count_lpep_pickup_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks:
+  - export_data_to_postgres
+  uuid: count_lpep_pickup_date
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    export_write_policy: replace
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_data_to_gcp
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - test_taxi_data
+  uuid: export_data_to_gcp
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-02-03 03:47:28.805197+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: green_taxi_etl
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+updated_at: '2024-02-06 10:29:27'
+uuid: green_taxi_etl
+variables:
+  unique_vendor_ids: '[2, 1]'
+variables_dir: /home/src/mage_data/green-taxi-etl
+widgets: []
