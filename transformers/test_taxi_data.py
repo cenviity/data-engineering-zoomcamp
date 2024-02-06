@@ -41,6 +41,11 @@ def test_vendor_id_in_existing_values(output, *args, **kwargs) -> None:
 
 
 @test
+def test_vendor_id_in_columns(output, *args) -> None:
+    assert "vendor_id" in output.columns, "There is no column named `vendor_id`"
+
+
+@test
 def test_positive_passenger_count(output, *args) -> None:
     assert (
         output["passenger_count"] > 0
