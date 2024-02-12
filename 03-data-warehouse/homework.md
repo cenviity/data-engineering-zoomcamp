@@ -19,6 +19,14 @@ Question 1: What is count of records for the 2022 Green Taxi Data??
 - 1,936,423
 - 253,647
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **840,402**.
+</details>
+
 ## Question 2:
 Write a query to count the distinct number of PULocationIDs for the entire dataset on both the tables.</br>
 What is the estimated amount of data that will be read when this query is executed on the External Table and the Table?
@@ -29,6 +37,14 @@ What is the estimated amount of data that will be read when this query is execut
 - 2.14 MB for the External Table and 0MB for the Materialized Table
 
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **0 MB for the External Table and 6.41MB for the Materialized Table**.
+</details>
+
 ## Question 3:
 How many records have a fare_amount of 0?
 - 12,488
@@ -36,12 +52,28 @@ How many records have a fare_amount of 0?
 - 112
 - 1,622
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **1,622**.
+</details>
+
 ## Question 4:
 What is the best strategy to make an optimized table in Big Query if your query will always order the results by PUlocationID and filter based on lpep_pickup_datetime? (Create a new table with this strategy)
 - Cluster on lpep_pickup_datetime Partition by PUlocationID
 - Partition by lpep_pickup_datetime  Cluster on PUlocationID
 - Partition by lpep_pickup_datetime and Partition by PUlocationID
 - Cluster on by lpep_pickup_datetime and Cluster on PUlocationID
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **Partition by lpep_pickup_datetime and Cluster on PUlocationID**. Partitioning the data means we only need to inspect the particular partitions containing the values filtered for `lpep_pickup_datetime` rather than the entire table every time. Clustering the data means records with the same `PULocationID` will already be adjacent to each other, speeding up queries that require the data to be sorted.
+</details>
 
 ## Question 5:
 Write a query to retrieve the distinct PULocationID between lpep_pickup_datetime
@@ -57,6 +89,14 @@ Choose the answer which most closely matches.</br>
 - 10.31 MB for non-partitioned table and 10.31 MB for the partitioned table
 
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **12.82 MB for non-partitioned table and 1.12 MB for the partitioned table**.
+</details>
+
 ## Question 6:
 Where is the data stored in the External Table you created?
 
@@ -66,15 +106,39 @@ Where is the data stored in the External Table you created?
 - Container Registry
 
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **GCP Bucket**. This is where we loaded the Parquet files to.
+</details>
+
 ## Question 7:
 It is best practice in Big Query to always cluster your data:
 - True
 - False
 
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **False**. As mentioned in the [slides for this module](https://docs.google.com/presentation/d/1a3ZoBAXFk8-EhUsd7rAZd-5p_HpltkzSeujjRGB2TAI/edit#slide=id.g10c8bcef47f_0_9), with smaller datasets (fewer than 1 GB), clustering may not be an effective optimisation.
+</details>
+
 ## (Bonus: Not worth points) Question 8:
 No Points: Write a `SELECT count(*)` query FROM the materialized table you created. How many bytes does it estimate will be read? Why?
 
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The answer is **0 B**. The `count(*)` or table row count is retrieved from the materialised table's metadata, so the query does not actually need to be run.
+</details>
 
 ## Submitting the solutions
 
