@@ -6,7 +6,7 @@ authors = ["Vincent Ging Ho Yim <cenviity@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "~3.11"
 
 
 [build-system]
