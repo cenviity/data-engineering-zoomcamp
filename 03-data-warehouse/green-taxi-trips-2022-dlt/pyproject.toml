@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "~3.11"
 dlt = {extras = ["duckdb", "parquet"], version = "^0.4.4"}
+pandas = {extras = ["parquet"], version = "^2.2.0"}
 
 
 [build-system]
