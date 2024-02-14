@@ -2,6 +2,7 @@ import io
 
 import dlt
 import pandas as pd
+from dlt.sources.credentials import GcpServiceAccountCredentials
 from dlt.sources.helpers import requests
 
 
@@ -15,9 +16,17 @@ def load_parquet_files():
         yield data
 
 
+credentials = GcpServiceAccountCredentials()
+with open(".dlt/gcp-secrets.json", "r") as f:
+    native_value = f.read()
+credentials.parse_native_representation(native_value)
+
 pipeline = dlt.pipeline(
     pipeline_name="load_taxi_data",
-    destination="duckdb",
+    destination=dlt.destinations.filesystem(
+        bucket_url="gs://de-zoomcamp-module-3-homework-vincent-yim-dlt",
+        credentials=credentials,
+    ),
     dataset_name="green_taxi_trips_2022",
 )
 
