@@ -5,6 +5,11 @@ import pandas as pd
 from dlt.destinations import filesystem
 from dlt.sources.helpers import requests
 
+pipeline = dlt.pipeline(
+    pipeline_name="load_taxi_data",
+    dataset_name="green_taxi_trips_2022",
+)
+
 for month in range(1, 13):
     _month = f"{month:02}"
 
@@ -25,14 +30,9 @@ for month in range(1, 13):
         layout=f"{{table_name}}/green_tripdata_2022-{_month}",
     )
 
-    pipeline = dlt.pipeline(
-        pipeline_name="load_taxi_data",
-        destination=destination,
-        dataset_name="green_taxi_trips_2022",
-    )
-
     load_info = pipeline.run(
         load_parquet_files,
+        destination=destination,
         loader_file_format="parquet",
         table_name="trips",
     )
