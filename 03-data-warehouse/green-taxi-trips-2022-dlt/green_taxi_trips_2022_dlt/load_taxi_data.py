@@ -25,8 +25,6 @@ for month in range(1, 13):
         yield data
 
     destination = filesystem(
-        bucket_url=dlt.config.value,
-        credentials=dlt.secrets.value,
         layout=f"{{table_name}}/green_tripdata_2022-{_month}",
     )
 
