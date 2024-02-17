@@ -23,7 +23,7 @@ The external table was then created with [this DDL statement](https://github.com
 
 **Update 2024-02-17:**
 
-I have managed to write a [`dlt` pipeline](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/03-data-warehouse/green-taxi-trips-2022-dlt/green_taxi_trips_2022_dlt/load_taxi_data.py) to load the Parquet files into GCS now.
+I have managed to write a [`dlt` pipeline](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/03-data-warehouse/green-taxi-trips-2022-dlt/) to load the Parquet files into GCS now.
 </details>
 
 ## Question 1:
