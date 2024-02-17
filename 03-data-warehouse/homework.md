@@ -20,6 +20,10 @@ Create a table in BQ using the Green Taxi Trip Records for 2022 (do not partitio
 I had trouble getting Mage to load the Parquet files into GCS, so I modified the script provided by DE Zoomcamp and [used it](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/web_to_gcs.py) to accomplish the file loading instead.
 
 The external table was then created with [this DDL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L1-L6). The materialised table was created with [this DDL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L8-L12).
+
+**Update 2024-02-17:**
+
+I have managed to write a [`dlt` pipeline](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/03-data-warehouse/green-taxi-trips-2022-dlt/green_taxi_trips_2022_dlt/load_taxi_data.py) to load the Parquet files into GCS now.
 </details>
 
 ## Question 1:
