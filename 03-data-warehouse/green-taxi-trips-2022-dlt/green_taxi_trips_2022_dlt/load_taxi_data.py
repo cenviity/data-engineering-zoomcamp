@@ -1,13 +1,9 @@
 import io
-import logging
 
 import dlt
 import pandas as pd
 from dlt.destinations import filesystem
 from dlt.sources.helpers import requests
-
-logging_level = logging.INFO
-logging.basicConfig(level=logging_level)
 
 for month in range(1, 13):
     _month = f"{month:02}"
@@ -40,4 +36,4 @@ for month in range(1, 13):
         loader_file_format="parquet",
         table_name="trips",
     )
-    logging.info(load_info)
+    print(load_info)
