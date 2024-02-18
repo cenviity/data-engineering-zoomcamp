@@ -1,4 +1,3 @@
-
 .DS_Store
 .idea
 *.tfstate
@@ -14,3 +13,6 @@
 serving_dir
 .ipynb_checkpoints/
 !week_6_stream_processing/avro_example/data/rides.csv
+.venv
+*.code-workspace
+**/.DS_Store

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "green-taxi-trips-2022"
+version = "0.1.0"
+description = ""
+authors = ["Vincent Ging Ho Yim <cenviity@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.31.0"
+pyarrow = { extras = ["parquet"], version = "^15.0.0" }
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

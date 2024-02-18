@@ -4,13 +4,13 @@ ATTENTION: At the very end of the submission form, you will be required to inclu
 
 ## Docker & SQL
 
-In this homework we'll prepare the environment 
+In this homework we'll prepare the environment
 and practice with Docker and SQL
 
 
 ## Question 1. Knowing docker tags
 
-Run the command to get information on Docker 
+Run the command to get information on Docker
 
 ```docker --help```
 
@@ -20,18 +20,44 @@ Now run the command to get help on the "docker build" command:
 
 Do the same for "docker run".
 
-Which tag has the following text? - *Automatically remove the container when it exits* 
+Which tag has the following text? - *Automatically remove the container when it exits*
 
 - `--delete`
 - `--rc`
 - `--rmc`
 - `--rm`
 
+### 🔵 Answer
 
-## Question 2. Understanding docker first run 
+<details>
+    <summary>Show / hide</summary>
+
+```bash
+$ docker run --help
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Create and run a new container from an image
+
+Aliases:
+  docker container run, docker run
+
+Options:
+      --add-host list                    Add a custom host-to-IP mapping (host:ip)
+      --annotation map                   Add an annotation to the container (passed through to the OCI runtime) (default map[])
+  -a, --attach list                      Attach to STDIN, STDOUT or STDERR
+[...]
+      --rm                               Automatically remove the container when it exits
+[...]
+```
+
+The answer is `--rm`.
+</details>
+
+## Question 2. Understanding docker first run
 
 Run docker with the python:3.9 image in an interactive mode and the entrypoint of bash.
-Now check the python modules that are installed ( use ```pip list``` ). 
+Now check the python modules that are installed ( use ```pip list``` ).
 
 What is version of the package *wheel* ?
 
@@ -40,6 +66,24 @@ What is version of the package *wheel* ?
 - 23.0.1
 - 58.1.0
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+```bash
+$ docker run -it --entrypoint=bash python:3.9
+
+root@6664d9488f9d:/# pip list
+Package    Version
+---------- -------
+pip        23.0.1
+setuptools 58.1.0
+wheel      0.42.0
+```
+
+The version of the package *wheel* is `0.42.0`.
+</details>
 
 # Prepare Postgres
 
@@ -54,12 +98,45 @@ You will also need the dataset with zones:
 
 Download this data and put it into Postgres (with jupyter notebooks or with a pipeline)
 
+## 🔵 Ingesting data
 
-## Question 3. Count records 
+<details>
+    <summary>Show / hide</summary>
+
+Update `ingest_data.py` to handle different column names in green taxi trips data – see commit [5272f83](https://github.com/cenviity/data-engineering-zoomcamp-2024/commit/5272f83).
+
+
+```bash
+# Navigate from project root directory to folder containing `docker-compose.yaml`
+$ cd 01-docker-terraform/2_docker_sql
+
+# Rebuild image
+$ docker build -t taxi_ingest:v001 .
+
+# Start up containers
+$ docker compose up -d
+
+# Run ingest script to load green taxi trips data into database
+$ docker run -it \
+    --network=2_docker_sql_default \
+    taxi_ingest:v001 \
+    --user=root \
+    --password=root \
+    --host=pgdatabase \
+    --port=5432 \
+    --db=ny_taxi \
+    --table_name=green_taxi_trips \
+    --url="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-09.csv.gz"
+```
+
+Taxi zones data has already been loaded earlier – see commit [7bca57e](https://github.com/cenviity/data-engineering-zoomcamp-2024/commit/7bca57e).
+</details>
+
+## Question 3. Count records
 
 How many taxi trips were totally made on September 18th 2019?
 
-Tip: started and finished on 2019-09-18. 
+Tip: started and finished on 2019-09-18.
 
 Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in the format timestamp (date and hour+min+sec) and not in date.
 
@@ -68,30 +145,81 @@ Remember that `lpep_pickup_datetime` and `lpep_dropoff_datetime` columns are in 
 - 15859
 - 89009
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+[SQL query](question3.sql)
+
+Result:
+
+```
+"pickup_date"	"dropoff_date"	"count"
+"2019-09-18"	"2019-09-18"	15612
+```
+
+The answer is **15612**.
+</details>
+
 ## Question 4. Longest trip for each day
 
 Which was the pick up day with the longest trip distance?
 Use the pick up time for your calculations.
 
-Tip: For every trip on a single day, we only care about the trip with the longest distance. 
+Tip: For every trip on a single day, we only care about the trip with the longest distance.
 
 - 2019-09-18
 - 2019-09-16
 - 2019-09-26
 - 2019-09-21
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+[SQL query](question4.sql)
+
+Result:
+
+```
+"pickup_date"	"max"
+"2019-09-26"	341.64
+```
+
+The answer is **2019-09-26**.
+</details>
 
 ## Question 5. Three biggest pick up Boroughs
 
 Consider lpep_pickup_datetime in '2019-09-18' and ignoring Borough has Unknown
 
 Which were the 3 pick up Boroughs that had a sum of total_amount superior to 50000?
- 
+
 - "Brooklyn" "Manhattan" "Queens"
 - "Bronx" "Brooklyn" "Manhattan"
-- "Bronx" "Manhattan" "Queens" 
+- "Bronx" "Manhattan" "Queens"
 - "Brooklyn" "Queens" "Staten Island"
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+[SQL query](question5.sql)
+
+Result:
+
+```
+"pickup_date"	"borough"	"total_amount"
+"2019-09-18"	"Brooklyn"	96333.24000000046
+"2019-09-18"	"Manhattan"	92271.30000000083
+"2019-09-18"	"Queens"	78671.71000000004
+```
+
+The answer is **"Brooklyn" "Manhattan" "Queens"**.
+</details>
 
 ## Question 6. Largest tip
 
@@ -105,13 +233,28 @@ Note: it's not a typo, it's `tip` , not `trip`
 - JFK Airport
 - Long Island City/Queens Plaza
 
+### 🔵 Answer
 
+<details>
+    <summary>Show / hide</summary>
+
+[SQL query](question6.sql)
+
+Result:
+
+```
+"dropoff_zone"	"tip_amount"
+"JFK Airport"	62.31
+```
+
+The answer is **JFK Airport**.
+</details>
 
 ## Terraform
 
 In this section homework we'll prepare the environment by creating resources in GCP with Terraform.
 
-In your VM on GCP/Laptop/GitHub Codespace install Terraform. 
+In your VM on GCP/Laptop/GitHub Codespace install Terraform.
 Copy the files from the course repo
 [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/1_terraform_gcp/terraform) to your VM/Laptop/GitHub Codespace.
 
@@ -128,10 +271,17 @@ terraform apply
 
 Paste the output of this command into the homework submission form.
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+[Command line output](question7.txt)
+</details>
 
 ## Submitting the solutions
 
 * Form for submitting: https://courses.datatalks.club/de-zoomcamp-2024/homework/hw01
-* You can submit your homework multiple times. In this case, only the last submission will be used. 
+* You can submit your homework multiple times. In this case, only the last submission will be used.
 
 Deadline: 29 January, 23:00 CET

@@ -1,3 +1,8 @@
+# data-engineering-zoomcamp-2024
+Hi there! I'm Vincent Ging Ho Yim, and this repository contains the code for my learning as part of the Data Engineering Zoomcamp cohort 2024.
+
+---
+
 # Data Engineering Zoomcamp
 
 
@@ -13,15 +18,25 @@
 
 Syllabus
 
-* [Module 1: Containerization and Infrastructure as Code](#module-1-containerization-and-infrastructure-as-code)
-* [Module 2: Workflow Orchestration](#module-2-workflow-orchestration)
-* [Workshop 1: Data Ingestion](#workshop-1-data-ingestion)
-* [Module 3: Data Warehouse](#module-3-data-warehouse)
-* [Module 4: Analytics Engineering](#module-4-analytics-engineering)
-* [Module 5: Batch processing](#module-5-batch-processing)
-* [Module 6: Streaming](#module-6-streaming)
-* [Workshop 2: Stream Processing with SQL](#workshop-2-stream-processing-with-sql)
-* [Project](#project)
+- [Taking the course](#taking-the-course)
+  - [2024 Cohort](#2024-cohort)
+  - [Self-paced mode](#self-paced-mode)
+- [Syllabus](#syllabus)
+  - [Module 1: Containerization and Infrastructure as Code](#module-1-containerization-and-infrastructure-as-code)
+  - [Module 2: Workflow Orchestration](#module-2-workflow-orchestration)
+  - [Workshop 1: Data Ingestion](#workshop-1-data-ingestion)
+  - [Module 3: Data Warehouse](#module-3-data-warehouse)
+  - [Module 4: Analytics engineering](#module-4-analytics-engineering)
+  - [Module 5: Batch processing](#module-5-batch-processing)
+  - [Module 6: Streaming](#module-6-streaming)
+  - [Workshop 2: Stream Processing with SQL](#workshop-2-stream-processing-with-sql)
+  - [Project](#project)
+- [Overview](#overview)
+  - [Prerequisites](#prerequisites)
+- [Instructors](#instructors)
+- [Asking for help in Slack](#asking-for-help-in-slack)
+- [Supporters and partners](#supporters-and-partners)
+- [Star History](#star-history)
 
 ## Taking the course
 
