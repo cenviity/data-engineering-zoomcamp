@@ -1,6 +1,11 @@
 # data-engineering-zoomcamp-2024
 Hi there! I'm Vincent Ging Ho Yim, and this repository contains the code for my learning as part of the Data Engineering Zoomcamp cohort 2024.
 
+Find me on:
+- [LinkedIn](https://www.linkedin.com/in/vincent-ging-ho-yim/)
+- [Mastodon](https://mastodon.cloud/@cenviity)
+- [Twitter](https://twitter.com/cenviity)
+
 ---
 
 # Data Engineering Zoomcamp
