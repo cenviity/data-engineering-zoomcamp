@@ -16,3 +16,4 @@ serving_dir
 .venv
 *.code-workspace
 **/.DS_Store
+*.duckdb*
