@@ -169,5 +169,5 @@ node_modules
 scratch*
 /mage_data*
 *secrets*.json
-green-taxi-etl
+# green-taxi-etl
 *.json
