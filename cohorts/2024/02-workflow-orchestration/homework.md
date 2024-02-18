@@ -48,7 +48,7 @@ Once the dataset is loaded, what's the shape of the data?
 <details>
     <summary>Show / hide</summary>
 
-The answer is **266,855 rows × 20 columns**, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/data_loaders/load_taxi_data.py).
+The answer is **266,855 rows × 20 columns**, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/data_loaders/load_taxi_data.py).
 </details>
 
 ## Question 2. Data Transformation
@@ -65,7 +65,7 @@ Upon filtering the dataset where the passenger count is greater than 0 _and_ the
 <details>
     <summary>Show / hide</summary>
 
-The answer is **139,370 rows**, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/remove_zero_passengers_or_trip_distance.py).
+The answer is **139,370 rows**, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/remove_zero_passengers_or_trip_distance.py).
 </details>
 
 ## Question 3. Data Transformation
@@ -82,7 +82,7 @@ Which of the following creates a new column `lpep_pickup_date` by converting `lp
 <details>
     <summary>Show / hide</summary>
 
-The answer is `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date`, as shown in the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/add_lpep_pickup_date.py#L26
+The answer is `data['lpep_pickup_date'] = data['lpep_pickup_datetime'].dt.date`, as shown in the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/add_lpep_pickup_date.py#L26
 ).
 </details>
 
@@ -100,8 +100,8 @@ What are the existing values of `VendorID` in the dataset?
 <details>
     <summary>Show / hide</summary>
 
-The answer is `1 or 2`, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/data_loaders/load_taxi_data.py#L48-L52
-) and [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/test_taxi_data.py#L35-L40).
+The answer is `1 or 2`, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/data_loaders/load_taxi_data.py#L48-L52
+) and [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/test_taxi_data.py#L35-L40).
 </details>
 
 ## Question 5. Data Transformation
@@ -118,7 +118,7 @@ How many columns need to be renamed to snake case?
 <details>
     <summary>Show / hide</summary>
 
-The answer is `4`, as shown in the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/rename_columns.py#L24-L27).
+The answer is `4`, as shown in the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/transformers/rename_columns.py#L24-L27).
 
 These are the columns that need renaming:
 * `VendorID`
@@ -141,7 +141,7 @@ Once exported, how many partitions (folders) are present in Google Cloud?
 <details>
     <summary>Show / hide</summary>
 
-The closest answer is **96**, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/data_loaders/count_lpep_pickup_date.sql), which gives a count of **95**.
+The closest answer is **96**, determined with the code [here](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/02-workflow-orchestration/green-taxi-etl/green-taxi-etl/data_loaders/count_lpep_pickup_date.sql), which gives a count of **95**.
 
 These are the columns that need renaming:
 * `VendorID`

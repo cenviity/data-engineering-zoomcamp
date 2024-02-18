@@ -20,13 +20,13 @@ Create a table in BQ using the Green Taxi Trip Records for 2022 (do not partitio
 <details>
     <summary>Show / hide</summary>
 
-I had trouble getting Mage to load the Parquet files into GCS, so I modified the script provided by DE Zoomcamp and [used it](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/web_to_gcs.py) to accomplish the file loading instead.
+I had trouble getting Mage to load the Parquet files into GCS, so I modified the script provided by DE Zoomcamp and [used it](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/web_to_gcs.py) to accomplish the file loading instead.
 
-The external table was then created with [this DDL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L1-L6). The materialised table was created with [this DDL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L8-L12).
+The external table was then created with [this DDL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L1-L6). The materialised table was created with [this DDL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L8-L12).
 
 **Update 2024-02-17:**
 
-I have managed to write a [`dlt` pipeline](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/main/03-data-warehouse/green-taxi-trips-2022-dlt/) to load the Parquet files into GCS now.
+I have managed to write a [`dlt` pipeline](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/green-taxi-trips-2022-dlt/) to load the Parquet files into GCS now.
 </details>
 
 ## Question 1:
@@ -41,7 +41,7 @@ Question 1: What is count of records for the 2022 Green Taxi Data??
 <details>
     <summary>Show / hide</summary>
 
-The answer is **840,402**. See [this SQL query](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L14-L19). The number of rows can also be seen in the BigQuery table metadata:
+The answer is **840,402**. See [this SQL query](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L14-L19). The number of rows can also be seen in the BigQuery table metadata:
 
 ![](screenshots/materialised_table_number_of_rows.png "Number of rows shown in materialised table's metadata")
 </details>
@@ -60,7 +60,7 @@ What is the estimated amount of data that will be read when this query is execut
 <details>
     <summary>Show / hide</summary>
 
-The answer is **0 MB for the External Table and 6.41MB for the Materialized Table**. See [these two SQL queries](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L21-L28).
+The answer is **0 MB for the External Table and 6.41MB for the Materialized Table**. See [these two SQL queries](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L21-L28).
 </details>
 
 ## Question 3:
@@ -75,7 +75,7 @@ How many records have a fare_amount of 0?
 <details>
     <summary>Show / hide</summary>
 
-The answer is **1,622**. See [this SQL query](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L30-L36).
+The answer is **1,622**. See [this SQL query](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L30-L36).
 </details>
 
 ## Question 4:
@@ -90,7 +90,7 @@ What is the best strategy to make an optimized table in Big Query if your query 
 <details>
     <summary>Show / hide</summary>
 
-The answer is **Partition by lpep_pickup_datetime and Cluster on PUlocationID**. See [this DDL SQL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L38-L44). Partitioning the data means we only need to inspect the particular partitions containing the values filtered for `lpep_pickup_datetime` rather than the entire table every time. Clustering the data means records with the same `PULocationID` will already be adjacent to each other, speeding up queries that require the data to be sorted.
+The answer is **Partition by lpep_pickup_datetime and Cluster on PUlocationID**. See [this DDL SQL statement](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L38-L44). Partitioning the data means we only need to inspect the particular partitions containing the values filtered for `lpep_pickup_datetime` rather than the entire table every time. Clustering the data means records with the same `PULocationID` will already be adjacent to each other, speeding up queries that require the data to be sorted.
 </details>
 
 ## Question 5:
@@ -111,7 +111,7 @@ Choose the answer which most closely matches.</br>
 <details>
     <summary>Show / hide</summary>
 
-The answer is **12.82 MB for non-partitioned table and 1.12 MB for the partitioned table**. See [these two SQL queries](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L46-L55).
+The answer is **12.82 MB for non-partitioned table and 1.12 MB for the partitioned table**. See [these two SQL queries](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L46-L55).
 </details>
 
 ## Question 6:
@@ -153,7 +153,7 @@ No Points: Write a `SELECT count(*)` query FROM the materialized table you creat
 <details>
     <summary>Show / hide</summary>
 
-The answer is **0 B**. See [this SQL query](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/homework-module-3/03-data-warehouse/bigquery_queries.sql#L57-L60), which is identical to the one for Q1, so the results of the query have been cached and the query does not need to be rerun this time to return the same results.
+The answer is **0 B**. See [this SQL query](https://github.com/cenviity/data-engineering-zoomcamp-2024/blob/develop/cohorts/2024/03-data-warehouse/bigquery_queries.sql#L57-L60), which is identical to the one for Q1, so the results of the query have been cached and the query does not need to be rerun this time to return the same results.
 </details>
 
 ## Submitting the solutions
