@@ -32,4 +32,4 @@ if __name__ == "__main__":
 
     # Load trip data for FHV (for-hire vehicles) in 2019
     for month in MONTHS:
-        load(category="fhv", year=2019, month=month, write_disposition="replace")
+        load(category="fhv", year=2019, month=month)

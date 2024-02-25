@@ -1,0 +1,399 @@
+version: 35
+version_hash: Xb4IukKKCwZfUVx4/nDqYIVO+Ftu4MM4GqCUMEGQ6fI=
+engine_version: 8
+name: source
+tables:
+  _dlt_version:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: false
+      schema:
+        data_type: text
+        nullable: false
+    write_disposition: skip
+    description: Created by DLT. Tracks schema updates
+  _dlt_loads:
+    columns:
+      load_id:
+        data_type: text
+        nullable: false
+      schema_name:
+        data_type: text
+        nullable: true
+      status:
+        data_type: bigint
+        nullable: false
+      inserted_at:
+        data_type: timestamp
+        nullable: false
+      schema_version_hash:
+        data_type: text
+        nullable: true
+    write_disposition: skip
+    description: Created by DLT. Tracks completed loads
+  _dlt_pipeline_state:
+    columns:
+      version:
+        data_type: bigint
+        nullable: false
+      engine_version:
+        data_type: bigint
+        nullable: false
+      pipeline_name:
+        data_type: text
+        nullable: false
+      state:
+        data_type: text
+        nullable: false
+      created_at:
+        data_type: timestamp
+        nullable: false
+      version_hash:
+        data_type: text
+        nullable: true
+      _dlt_load_id:
+        data_type: text
+        nullable: false
+      _dlt_id:
+        data_type: text
+        nullable: false
+        unique: true
+    write_disposition: append
+  ny_taxi_trips:
+    columns:
+      vendor_id:
+        nullable: true
+        data_type: bigint
+      tpep_pickup_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      tpep_dropoff_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      passenger_count:
+        nullable: true
+        data_type: double
+      trip_distance:
+        nullable: true
+        data_type: double
+      ratecode_id:
+        nullable: true
+        data_type: double
+      store_and_fwd_flag:
+        nullable: true
+        data_type: text
+      pu_location_id:
+        nullable: true
+        data_type: bigint
+      do_location_id:
+        nullable: true
+        data_type: bigint
+      payment_type:
+        nullable: true
+        data_type: bigint
+      fare_amount:
+        nullable: true
+        data_type: double
+      extra:
+        nullable: true
+        data_type: double
+      mta_tax:
+        nullable: true
+        data_type: double
+      tip_amount:
+        nullable: true
+        data_type: double
+      tolls_amount:
+        nullable: true
+        data_type: double
+      improvement_surcharge:
+        nullable: true
+        data_type: double
+      total_amount:
+        nullable: true
+        data_type: double
+      congestion_surcharge:
+        nullable: true
+        data_type: double
+      airport_fee:
+        nullable: true
+        data_type: double
+    write_disposition: replace
+    resource: yellow_2020_12
+  _category_taxi_trips:
+    columns:
+      vendor_id:
+        nullable: true
+        data_type: bigint
+      lpep_pickup_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      lpep_dropoff_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      store_and_fwd_flag:
+        nullable: true
+        data_type: text
+      ratecode_id:
+        nullable: true
+        data_type: double
+      pu_location_id:
+        nullable: true
+        data_type: bigint
+      do_location_id:
+        nullable: true
+        data_type: bigint
+      passenger_count:
+        nullable: true
+        data_type: double
+      trip_distance:
+        nullable: true
+        data_type: double
+      fare_amount:
+        nullable: true
+        data_type: double
+      extra:
+        nullable: true
+        data_type: double
+      mta_tax:
+        nullable: true
+        data_type: double
+      tip_amount:
+        nullable: true
+        data_type: double
+      tolls_amount:
+        nullable: true
+        data_type: double
+      ehail_fee:
+        nullable: true
+        data_type: double
+      improvement_surcharge:
+        nullable: true
+        data_type: double
+      total_amount:
+        nullable: true
+        data_type: double
+      payment_type:
+        nullable: true
+        data_type: double
+      trip_type:
+        nullable: true
+        data_type: double
+      congestion_surcharge:
+        nullable: true
+        data_type: double
+    write_disposition: append
+    resource: taxi_trips
+  green_taxi_trips:
+    columns:
+      vendor_id:
+        nullable: true
+        data_type: bigint
+      lpep_pickup_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+        partition: true
+      lpep_dropoff_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      store_and_fwd_flag:
+        nullable: true
+        data_type: text
+      ratecode_id:
+        nullable: true
+        data_type: bigint
+      pu_location_id:
+        nullable: true
+        data_type: bigint
+        cluster: true
+      do_location_id:
+        nullable: true
+        data_type: bigint
+        cluster: true
+      passenger_count:
+        nullable: true
+        data_type: bigint
+      trip_distance:
+        nullable: true
+        data_type: double
+      fare_amount:
+        nullable: true
+        data_type: double
+      extra:
+        nullable: true
+        data_type: double
+      mta_tax:
+        nullable: true
+        data_type: double
+      tip_amount:
+        nullable: true
+        data_type: double
+      tolls_amount:
+        nullable: true
+        data_type: double
+      ehail_fee:
+        nullable: true
+        data_type: double
+      improvement_surcharge:
+        nullable: true
+        data_type: double
+      total_amount:
+        nullable: true
+        data_type: double
+      payment_type:
+        nullable: true
+        data_type: double
+      trip_type:
+        nullable: true
+        data_type: double
+      congestion_surcharge:
+        nullable: true
+        data_type: double
+    write_disposition: append
+    resource: taxi_trips
+  yellow_taxi_trips:
+    columns:
+      vendor_id:
+        nullable: true
+        data_type: bigint
+      tpep_pickup_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+        partition: true
+      tpep_dropoff_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      passenger_count:
+        nullable: true
+        data_type: bigint
+      trip_distance:
+        nullable: true
+        data_type: double
+      ratecode_id:
+        nullable: true
+        data_type: bigint
+      store_and_fwd_flag:
+        nullable: true
+        data_type: text
+      pu_location_id:
+        nullable: true
+        data_type: bigint
+        cluster: true
+      do_location_id:
+        nullable: true
+        data_type: bigint
+        cluster: true
+      payment_type:
+        nullable: true
+        data_type: bigint
+      fare_amount:
+        nullable: true
+        data_type: double
+      extra:
+        nullable: true
+        data_type: double
+      mta_tax:
+        nullable: true
+        data_type: double
+      tip_amount:
+        nullable: true
+        data_type: double
+      tolls_amount:
+        nullable: true
+        data_type: double
+      improvement_surcharge:
+        nullable: true
+        data_type: double
+      total_amount:
+        nullable: true
+        data_type: double
+      congestion_surcharge:
+        nullable: true
+        data_type: double
+      airport_fee:
+        nullable: true
+        data_type: double
+    write_disposition: append
+    resource: taxi_trips
+  fhv_taxi_trips:
+    columns:
+      dispatching_base_num:
+        nullable: true
+        data_type: text
+      pickup_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+        partition: true
+      drop_off_datetime:
+        nullable: true
+        data_type: timestamp
+        precision: 6
+      p_ulocation_id:
+        nullable: true
+        data_type: bigint
+        cluster: true
+      d_olocation_id:
+        nullable: true
+        data_type: bigint
+        cluster: true
+      sr_flag:
+        nullable: true
+        data_type: bigint
+      affiliated_base_number:
+        nullable: true
+        data_type: text
+    write_disposition: append
+    resource: taxi_trips
+settings:
+  detections:
+    - iso_timestamp
+  default_hints:
+    not_null:
+      - _dlt_id
+      - _dlt_root_id
+      - _dlt_parent_id
+      - _dlt_list_idx
+      - _dlt_load_id
+    foreign_key:
+      - _dlt_parent_id
+    root_key:
+      - _dlt_root_id
+    unique:
+      - _dlt_id
+normalizers:
+  names: snake_case
+  json:
+    module: dlt.common.normalizers.json.relational
+previous_hashes:
+  - w7olVDWx6eA6bUs9C+qB5hkeudgM3V0IRSSsrOTF+eA=
+  - eTP7JLeE7T8GsC/9vRWSIrdledGxrBszuAnCHmLB32c=
+  - Mt3AyfCg0ltaxK3BohAOxm/Y73D/Y3TmKydOylRfLbg=
+  - BAUEhV5R5ksCCk8Tqpbct+Y0vzX0yjzbWAHcnf39Duo=
+  - kNtn9TJ3xM6ZZN5N9Dpt9grJylFVCczIE71nGTVf500=
+  - bkXIWfepf7TjgRI8AQTie/6ArlR49dEmdyK4yXuH0Oc=
+  - A08dhRQfRs49vhMig8gi+MzmNJRVV4u9AevesSGdJFo=
+  - yEywjAyDRXA0Bl/c1bzxn9CSgHPUoNCTeBvBmegdU4g=
+  - pHNQoeg5Teg9aG/hOLq0UBsJ5UH2nTS2B+akCrP3mmY=
+  - PXVRaAadr2ZUwr6KnAxtWFEb8gEfZvryo00S95NsuSs=
