@@ -1,21 +1,26 @@
 import itertools
 
 import dlt
-from ny_taxi_trips import taxi_trips
+from ny_taxi_trips import source
 from ny_taxi_trips.settings import MONTHS, YEARS
 
+pipeline = dlt.pipeline(
+    pipeline_name="ny_taxi_trips",
+    destination="bigquery",
+    import_schema_path="schemas/import",
+    export_schema_path="schemas/export",
+    progress="enlighten",
+)
 
-def load(category: str, year: int, month: int):
-    pipeline = dlt.pipeline(
-        pipeline_name="ny_taxi_trips",
-        destination="bigquery",
-        progress="enlighten",
-    )
+
+def load(category: str, year: int, month: int, write_disposition: str = "append"):
+    resource = f"{category}_taxi_trips"
     load_info = pipeline.run(
-        taxi_trips(category, year, month),
+        source(year, month).with_resources(resource),
         loader_file_format="parquet",
         dataset_name="ny_taxi_trips",
-        table_name=f"{category}_taxi_trips",
+        table_name=resource,
+        write_disposition=write_disposition,
     )
     print(load_info)
 
@@ -27,4 +32,4 @@ if __name__ == "__main__":
 
     # Load trip data for FHV (for-hire vehicles) in 2019
     for month in MONTHS:
-        load(category="fhv", year=2019, month=month)
+        load(category="fhv", year=2019, month=month, write_disposition="replace")
