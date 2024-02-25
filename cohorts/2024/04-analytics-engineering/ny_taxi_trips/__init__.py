@@ -24,6 +24,7 @@ def taxi_trips(
 
 @dlt.source
 def source(year, month, session: CachedSession):
+    # Dynamically create resources for each category
     for category in ["yellow", "green", "fhv"]:
         yield dlt.resource(
             taxi_trips(category, year, month, session),
