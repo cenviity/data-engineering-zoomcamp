@@ -4,3 +4,17 @@
 log_level = "INFO" # the system log level of dlt
 # use the dlthub_telemetry setting to enable/disable anonymous usage data reporting, see https://dlthub.com/docs/telemetry
 dlthub_telemetry = false
+
+[source.data_writer]
+file_max_items = 100000
+
+[normalize]
+workers = 15
+
+[normalize.data_writer]
+buffer_max_items = 100000
+file_max_items = 100000
+file_max_bytes = 1000000
+
+[load]
+workers = 50
