@@ -9,7 +9,7 @@ pipeline = dlt.pipeline(
     pipeline_name="ny_taxi_trips",
     destination="bigquery",
     import_schema_path="schemas/import",
-    export_schema_path="schemas/export",
+    # export_schema_path="schemas/export",
     progress="enlighten",
 )
 
