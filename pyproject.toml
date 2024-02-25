@@ -12,6 +12,7 @@ enlighten = "^1.12.4"
 ipykernel = "^6.29.2"
 requests-cache = "^1.2.0"
 streamlit = "^1.31.1"
+dbt-bigquery = "^1.7.6"
 
 
 [tool.poetry.group.dev.dependencies]
