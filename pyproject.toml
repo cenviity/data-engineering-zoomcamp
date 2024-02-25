@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "data-engineering-zoomcamp-2024"
+version = "0.1.0"
+description = ""
+authors = ["Vincent Ging Ho Yim <28189684+cenviity@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
