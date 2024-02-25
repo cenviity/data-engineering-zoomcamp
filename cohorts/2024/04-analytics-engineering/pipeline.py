@@ -14,7 +14,13 @@ pipeline = dlt.pipeline(
 )
 
 
-def load(category: str, year: int, month: int, write_disposition: str = "append"):
+def load(
+    category: str,
+    year: int,
+    month: int,
+    columns: dict[str, dict[str, str]],
+    write_disposition: str = "append",
+):
     session = requests_cache.CachedSession()
     resource = f"{category}_taxi_trips"
     load_info = pipeline.run(
@@ -22,6 +28,7 @@ def load(category: str, year: int, month: int, write_disposition: str = "append"
         loader_file_format="parquet",
         dataset_name="ny_taxi_trips",
         table_name=resource,
+        columns=columns,
         write_disposition=write_disposition,
     )
     print(load_info)
@@ -30,8 +37,27 @@ def load(category: str, year: int, month: int, write_disposition: str = "append"
 if __name__ == "__main__":
     # Load trip data for yellow and green taxis in 2019 and 2020
     for product in itertools.product(["yellow", "green"], YEARS, MONTHS):
-        load(**dict(zip(("category", "year", "month"), product)))
+        load(
+            **dict(zip(("category", "year", "month"), product)),
+            columns={
+                "vendor_id": {"data_type": "bigint"},
+                "passenger_count": {"data_type": "bigint"},
+                "ratecode_id": {"data_type": "bigint"},
+                "pu_location_id": {"data_type": "bigint"},
+                "do_location_id": {"data_type": "bigint"},
+                "payment_type": {"data_type": "bigint"},
+            },
+        )
 
     # Load trip data for FHV (for-hire vehicles) in 2019
     for month in MONTHS:
-        load(category="fhv", year=2019, month=month)
+        load(
+            category="fhv",
+            year=2019,
+            month=month,
+            columns={
+                "p_ulocation_id": {"data_type": "bigint"},
+                "d_olocation_id": {"data_type": "bigint"},
+                "sr_flag": {"data_type": "bigint"},
+            },
+        )

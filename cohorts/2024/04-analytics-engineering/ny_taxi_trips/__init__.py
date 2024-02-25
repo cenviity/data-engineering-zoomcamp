@@ -16,7 +16,10 @@ def taxi_trips(
     response = session.get(url)
     response.raise_for_status()
 
-    yield pd.read_parquet(io.BytesIO(response.content))
+    df = pd.read_parquet(io.BytesIO(response.content))
+    # Cast to nullable data types
+    # So that a column with both ints and nulls is not treated as floats
+    yield df.convert_dtypes()
 
 
 @dlt.source
