@@ -38,3 +38,6 @@ terraform.rc
 # Ignore dlt secrets files
 .dlt/*
 !.dlt/config.toml
+
+# Ignore temporary Parquet files
+*.parquet
