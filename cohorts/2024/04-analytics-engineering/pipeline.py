@@ -1,6 +1,7 @@
 import itertools
 
 import dlt
+import requests_cache
 from ny_taxi_trips import source
 from ny_taxi_trips.settings import MONTHS, YEARS
 
@@ -14,9 +15,10 @@ pipeline = dlt.pipeline(
 
 
 def load(category: str, year: int, month: int, write_disposition: str = "append"):
+    session = requests_cache.CachedSession()
     resource = f"{category}_taxi_trips"
     load_info = pipeline.run(
-        source(year, month).with_resources(resource),
+        source(year, month, session=session).with_resources(resource),
         loader_file_format="parquet",
         dataset_name="ny_taxi_trips",
         table_name=resource,

@@ -41,3 +41,6 @@ terraform.rc
 
 # Ignore temporary Parquet files
 *.parquet
+
+# Ignore requests cache
+*cache.sqlite
