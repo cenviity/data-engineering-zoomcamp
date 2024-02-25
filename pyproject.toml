@@ -6,8 +6,8 @@ authors = ["Vincent Ging Ho Yim <28189684+cenviity@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.13"
-dlt = {extras = ["duckdb", "gs", "parquet"], version = "^0.4.4"}
+python = ">=3.11,<3.12"
+dlt = { extras = ["duckdb", "gs", "parquet"], version = "^0.4.4" }
 enlighten = "^1.12.4"
 ipykernel = "^6.29.2"
 requests-cache = "^1.2.0"

@@ -2304,10 +2304,7 @@ files = [
 ]
 
 [package.dependencies]
-numpy = [
-    {version = ">=1.23.2,<2", markers = "python_version == \"3.11\""},
-    {version = ">=1.26.0,<2", markers = "python_version >= \"3.12\""},
-]
+numpy = {version = ">=1.23.2,<2", markers = "python_version == \"3.11\""}
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
 tzdata = ">=2022.7"
@@ -4170,5 +4167,5 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.11,<3.13"
-content-hash = "595730b80ee77f6c54b880f06bdc505af1fdc4dda662340848c163e08fc7da1a"
+python-versions = ">=3.11,<3.12"
+content-hash = "b3a7ad332d17171fe718fed530cc4c6bf846e8065710d9661bb8fe6be88efaa7"
