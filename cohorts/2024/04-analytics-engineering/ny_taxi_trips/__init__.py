@@ -5,8 +5,8 @@ from collections.abc import Iterator
 
 import dlt
 import pandas as pd
-import requests
 from dlt.sources import DltResource
+from dlt.sources.helpers import requests
 from pandas import DataFrame
 
 from .settings import CATEGORIES, MONTHS, URL, YEARS
