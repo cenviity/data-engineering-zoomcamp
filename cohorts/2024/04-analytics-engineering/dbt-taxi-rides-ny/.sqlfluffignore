@@ -1,2 +1,4 @@
 # Ignore compiled models
-target/*
+dbt_packages/
+macros/
+target/
