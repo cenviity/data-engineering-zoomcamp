@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: even-ally-412601
+    schema: ny_taxi_trips
+
+    tables:
+      - name: green_taxi_trips
+      - name: yellow_taxi_trips
