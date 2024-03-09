@@ -49,12 +49,15 @@ select
     trips_unioned.vendorid,
     trips_unioned.service_type,
     trips_unioned.ratecodeid,
+
     trips_unioned.pickup_locationid,
     pickup_zones.borough as pickup_borough,
     pickup_zones.zone as pickup_zone,
+
     trips_unioned.dropoff_locationid,
     dropoff_zones.borough as dropoff_borough,
     dropoff_zones.zone as dropoff_zone,
+
     trips_unioned.pickup_datetime,
     trips_unioned.dropoff_datetime,
     trips_unioned.store_and_fwd_flag,
