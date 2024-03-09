@@ -32,3 +32,6 @@ clean-targets: # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   taxi_rides_ny:
+
+vars:
+  payment_type_values: [1, 2, 3, 4, 5]
