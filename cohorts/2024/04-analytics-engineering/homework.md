@@ -35,7 +35,7 @@ One surprising challenge was that Pandas would automatically cast columns with b
 
 #### Set up and configure dbt Cloud
 
-I prefer working in VS Code, so I decided to set up the dbt Cloud CLI instead of using the dbt Cloud IDE (which I've used at work before when I first picked up dbt). I also spent some time installing dbt Core and configuring the **dbt Power User** VS Code extension combined with `sqlfluff` for linting and formatting Jinja SQL files.
+I prefer working in VS Code, so I decided to set up the dbt Cloud CLI instead of using the dbt Cloud IDE (which I've used at work before when I first picked up dbt). I also spent some time installing dbt Core and configuring the **[dbt Power User](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user)** and **[Turntable](https://marketplace.visualstudio.com/items?itemName=turntable.turntable-for-dbt-core)** VS Code extensions combined with `sqlfluff` for linting and formatting Jinja SQL files.
 </details>
 
 ### Question 1:
