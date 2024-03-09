@@ -81,4 +81,4 @@ inner join dim_zones as pickup_zones
     on trips_unioned.pickup_locationid = pickup_zones.locationid
 
 inner join dim_zones as dropoff_zones
-    on trips_unioned.dropoff_locationid = dropoff_zones.locationid
+    on trips_unioned.pickup_locationid = dropoff_zones.locationid
