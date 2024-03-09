@@ -47,6 +47,17 @@ You'll need to have completed the ["Build the first dbt models"](https://www.you
 - It applies a _limit 100_ only to our staging models
 - Nothing
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+Since the `is_test_run` variable is only used in the staging models ([`stg_green_taxi_trips`][green] and [`stg_yellow_taxi_trips`][yellow]), the answer is **It applies a _limit 100_ only to our staging models**.
+
+[green]: dbt-taxi-rides-ny/models/staging/stg_green_taxi_trips.sql
+[yellow]: dbt-taxi-rides-ny/models/staging/stg_yellow_taxi_trips.sql
+</details>
+
 ### Question 2:
 
 **What is the code that our CI job will run? Where is this code coming from?**
@@ -56,6 +67,13 @@ You'll need to have completed the ["Build the first dbt models"](https://www.you
 - The code from any development branch that has been opened based on main
 - The code from the development branch we are requesting to merge to main
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The CI job runs whenever a pull request is opened for merging changes into the `main` branch. The answer is **The code from the development branch we are requesting to merge to main**.
+</details>
 
 ### Question 3 (2 points)
 
