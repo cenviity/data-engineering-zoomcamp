@@ -2,7 +2,10 @@ version: 2
 
 models:
   - name: dim_zones
-    description: ""
+    description: >
+      List of unique zones identified by `locationid`.
+      Includes the service zone they correspond to (Green or Yellow).
+
     columns:
       - name: locationid
         data_type: int64
@@ -21,11 +24,15 @@ models:
         description: ""
 
   - name: fact_trips
-    description: ""
+    description: >
+      Taxi trips corresponding to both service zones (Green and Yellow).
+      The table contains records where both pickup and dropoff locations are valid and known zones.
+      Each record corresponds to a trip uniquely identified by `tripid`.
+
     columns:
       - name: tripid
         data_type: string
-        description: ""
+        description: Unique identifier conformed by the combination of `vendorid` and `pickup_datetime`.
 
       - name: vendorid
         data_type: int64
