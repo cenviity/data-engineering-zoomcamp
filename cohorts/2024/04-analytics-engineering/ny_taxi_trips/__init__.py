@@ -6,7 +6,7 @@ import pandas as pd
 from pandas import DataFrame
 from requests_cache import CachedSession
 
-from .settings import URL
+from ny_taxi_trips.settings import URL
 
 
 def taxi_trips(

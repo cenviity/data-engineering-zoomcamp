@@ -1,0 +1,4 @@
+# Ignore compiled models
+dbt_packages/
+macros/
+target/
