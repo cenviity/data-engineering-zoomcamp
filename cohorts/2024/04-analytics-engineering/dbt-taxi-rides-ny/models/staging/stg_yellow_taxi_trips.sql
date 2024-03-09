@@ -12,7 +12,7 @@ tripdata as (
         *,
         row_number() over (partition by vendor_id, tpep_pickup_datetime) as rn
 
-    from {{ source('staging','yellow_taxi_trips') }}
+    from {{ source('staging', 'yellow_taxi_trips') }}
 
     where vendor_id is not null
 )
