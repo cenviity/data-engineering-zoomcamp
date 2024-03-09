@@ -23,6 +23,65 @@ models:
         data_type: string
         description: ""
 
+  - name: dim_monthly_zone_revenue
+    description: ""
+    columns:
+      - name: revenue_zone
+        data_type: string
+        description: ""
+
+      - name: revenue_month
+        data_type: timestamp
+        description: ""
+
+      - name: service_type
+        data_type: string
+        description: ""
+
+      - name: revenue_monthly_fare
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_extra
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_mta_tax
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_tip_amount
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_tolls_amount
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_ehail_fee
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_improvement_surcharge
+        data_type: numeric
+        description: ""
+
+      - name: revenue_monthly_total_amount
+        data_type: numeric
+        description: ""
+
+      - name: total_monthly_trips
+        data_type: int64
+        description: ""
+
+      - name: avg_monthly_passenger_count
+        data_type: float64
+        description: ""
+
+      - name: avg_monthly_trip_distance
+        data_type: numeric
+        description: ""
+
   - name: fact_trips
     description: >
       Taxi trips corresponding to both service zones (Green and Yellow).
