@@ -90,6 +90,17 @@ Run the dbt model without limits (is_test_run: false).
 - 32998722
 - 42998722
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+I created a [staging model for the FHV data][fhv_staging] and a [core model][fhv_core] joining that data with `dim_zones`. There are 23,014,060 records in the `fact_fhv_trips` table after running all dependencies with the `is_test_run` variable disabled. The closest answer is **22,998,722**.
+
+[fhv_staging]: dbt-taxi-rides-ny/models/staging/stg_fhv_taxi_trips.sql
+[fhv_core]: dbt-taxi-rides-ny/models/core/fact_fhv_trips.sql
+</details>
+
 ### Question 4 (2 points)
 
 **What is the service that had the most rides during the month of July 2019 month with the biggest amount of rides after building a tile for the fact_fhv_trips table and the fact_trips tile as seen in the videos?**
