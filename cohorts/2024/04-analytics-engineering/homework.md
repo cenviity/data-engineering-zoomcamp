@@ -112,6 +112,17 @@ Create a dashboard with some tiles that you find interesting to explore the data
 - Yellow
 - FHV and Green
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+I created a new page in the dashboard from module 4's course demo to compare trips per month and service type – see [here][looker]. The answer is **Yellow** with the most rides in July 2019, at 3,238,565.
+
+[![](trips_per_month_and_service_type.png)][looker]
+
+[looker]: https://lookerstudio.google.com/s/pHHLIrSZ9vs
+</details>
 
 ## Submitting the solutions
 
