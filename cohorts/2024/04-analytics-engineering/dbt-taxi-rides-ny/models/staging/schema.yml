@@ -310,7 +310,7 @@ models:
 
       - name: pickup_locationid
         data_type: int64
-        description: The date and time when the meter was engaged.
+        description: The TLC Taxi Zone in which the trip began.
         tests:
           - relationships:
               field: locationid
@@ -319,7 +319,7 @@ models:
 
       - name: dropoff_locationid
         data_type: int64
-        description: The date and time when the meter was disengaged.
+        description: The TLC Taxi Zone in which the trip ended.
         tests:
           - relationships:
               field: locationid
@@ -340,8 +340,8 @@ models:
 
       - name: pickup_datetime
         data_type: timestamp
-        description: The date and time when the meter was engaged.
+        description: The date and time of the trip pickup.
 
       - name: dropoff_datetime
         data_type: timestamp
-        description: The date and time when the meter was disengaged.
+        description: The date and time of the trip dropoff.
