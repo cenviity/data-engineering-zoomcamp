@@ -27,7 +27,7 @@ select
 
     -- timestamps
     cast(pickup_datetime as timestamp) as pickup_datetime,
-    cast(drop_off_datetime as timestamp) as dropoff_datetime,
+    cast(drop_off_datetime as timestamp) as dropoff_datetime
 
 from tripdata
 
