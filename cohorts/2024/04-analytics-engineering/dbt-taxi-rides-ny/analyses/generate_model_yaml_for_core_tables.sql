@@ -1,6 +1,7 @@
 -- depends_on: {{ ref('dim_monthly_zone_revenue') }}
 -- depends_on: {{ ref('dim_zones') }}
 -- depends_on: {{ ref('fact_trips') }}
+-- depends_on: {{ ref('fact_fhv_trips') }}
 
 {% if execute %}
 
