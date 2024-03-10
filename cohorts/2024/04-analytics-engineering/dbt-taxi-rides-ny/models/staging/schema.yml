@@ -8,6 +8,7 @@ sources:
     tables:
       - name: green_taxi_trips
       - name: yellow_taxi_trips
+      - name: fhv_taxi_trips
 
 models:
   - name: stg_green_taxi_trips
@@ -285,3 +286,62 @@ models:
       - name: payment_type_description
         data_type: string
         description: Description of the `payment_type` code.
+
+  - name: stg_fhv_taxi_trips
+    description: >
+      Trips made by For-Hire Vehicle (“FHV”) taxis.
+      FHV trip records include fields capturing the dispatching base license number
+      and the pick-up date, time, and taxi zone location ID.
+      These records are generated from the FHV Trip Record submissions made by bases.
+
+    columns:
+      - name: tripid
+        data_type: string
+        description: Primary key for this table, generated with a concatenation of `dispatching_base_number` + `pickup_datetime`.
+        tests:
+          - unique:
+              severity: warn
+          - not_null:
+              severity: warn
+
+      - name: dispatching_base_number
+        data_type: string
+        description: The TLC Base License Number of the base that dispatched the trip.
+
+      - name: pickup_locationid
+        data_type: int64
+        description: The TLC Taxi Zone in which the trip began.
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
+
+      - name: dropoff_locationid
+        data_type: int64
+        description: The TLC Taxi Zone in which the trip ended.
+        tests:
+          - relationships:
+              field: locationid
+              to: ref('taxi_zone_lookup')
+              severity: warn
+
+      - name: shared_ride_flag
+        data_type: int64
+        description: >
+          Indicates if the trip was a part of a shared ride chain offered by a
+          High Volume FHV company (e.g. Uber Pool, Lyft Line).
+            1 = shared trips
+            null = non-shared rides
+
+      - name: affiliated_base_number
+        data_type: string
+        description: ""
+
+      - name: pickup_datetime
+        data_type: timestamp
+        description: The date and time of the trip pickup.
+
+      - name: dropoff_datetime
+        data_type: timestamp
+        description: The date and time of the trip dropoff.

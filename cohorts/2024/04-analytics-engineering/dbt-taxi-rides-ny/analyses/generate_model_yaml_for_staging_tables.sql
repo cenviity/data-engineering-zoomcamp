@@ -1,5 +1,6 @@
 -- depends_on: {{ ref('stg_green_taxi_trips') }}
 -- depends_on: {{ ref('stg_yellow_taxi_trips') }}
+-- depends_on: {{ ref('stg_fhv_taxi_trips') }}
 
 {% if execute %}
 

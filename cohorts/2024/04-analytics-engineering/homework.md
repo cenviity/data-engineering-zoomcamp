@@ -35,7 +35,7 @@ One surprising challenge was that Pandas would automatically cast columns with b
 
 #### Set up and configure dbt Cloud
 
-I prefer working in VS Code, so I decided to set up the dbt Cloud CLI instead of using the dbt Cloud IDE (which I've used at work before when I first picked up dbt). I also spent some time installing dbt Core and configuring the **dbt Power User** VS Code extension combined with `sqlfluff` for linting and formatting Jinja SQL files.
+I prefer working in VS Code, so I decided to set up the dbt Cloud CLI instead of using the dbt Cloud IDE (which I've used at work before when I first picked up dbt). I also spent some time installing dbt Core and configuring the **[dbt Power User](https://marketplace.visualstudio.com/items?itemName=innoverio.vscode-dbt-power-user)** and **[Turntable](https://marketplace.visualstudio.com/items?itemName=turntable.turntable-for-dbt-core)** VS Code extensions combined with `sqlfluff` for linting and formatting Jinja SQL files.
 </details>
 
 ### Question 1:
@@ -47,6 +47,17 @@ You'll need to have completed the ["Build the first dbt models"](https://www.you
 - It applies a _limit 100_ only to our staging models
 - Nothing
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+Since the `is_test_run` variable is only used in the staging models ([`stg_green_taxi_trips`][green] and [`stg_yellow_taxi_trips`][yellow]), the answer is **It applies a _limit 100_ only to our staging models**.
+
+[green]: dbt-taxi-rides-ny/models/staging/stg_green_taxi_trips.sql
+[yellow]: dbt-taxi-rides-ny/models/staging/stg_yellow_taxi_trips.sql
+</details>
+
 ### Question 2:
 
 **What is the code that our CI job will run? Where is this code coming from?**
@@ -56,6 +67,13 @@ You'll need to have completed the ["Build the first dbt models"](https://www.you
 - The code from any development branch that has been opened based on main
 - The code from the development branch we are requesting to merge to main
 
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+The CI job runs whenever a pull request is opened for merging changes into the `main` branch. The answer is **The code from the development branch we are requesting to merge to main**.
+</details>
 
 ### Question 3 (2 points)
 
@@ -71,6 +89,17 @@ Run the dbt model without limits (is_test_run: false).
 - 22998722
 - 32998722
 - 42998722
+
+### 🔵 Answer
+
+<details>
+    <summary>Show / hide</summary>
+
+I created a [staging model for the FHV data][fhv_staging] and a [core model][fhv_core] joining that data with `dim_zones`. There are 23,014,060 records in the `fact_fhv_trips` table after running all dependencies with the `is_test_run` variable disabled. The closest answer is **22,998,722**.
+
+[fhv_staging]: dbt-taxi-rides-ny/models/staging/stg_fhv_taxi_trips.sql
+[fhv_core]: dbt-taxi-rides-ny/models/core/fact_fhv_trips.sql
+</details>
 
 ### Question 4 (2 points)
 
