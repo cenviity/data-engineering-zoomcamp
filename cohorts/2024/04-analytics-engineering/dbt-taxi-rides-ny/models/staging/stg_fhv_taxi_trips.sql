@@ -21,11 +21,11 @@ tripdata as (
 select
     -- identifiers
     {{ dbt_utils.generate_surrogate_key(["dispatching_base_num", "pickup_datetime"]) }} as tripid,
-    {{ dbt.safe_cast("dispatching_base_num", api.Column.translate_type("integer")) }} as dispatching_base_number,
+    dispatching_base_num as dispatching_base_number,
     {{ dbt.safe_cast("p_ulocation_id", api.Column.translate_type("integer")) }} as pickup_locationid,
     {{ dbt.safe_cast("d_olocation_id", api.Column.translate_type("integer")) }} as dropoff_locationid,
     {{ dbt.safe_cast("sr_flag", api.Column.translate_type("integer")) }} as shared_ride_flag,
-    {{ dbt.safe_cast("affiliated_base_number", api.Column.translate_type("integer")) }} as affiliated_base_number,
+    affiliated_base_number,
 
     -- timestamps
     cast(pickup_datetime as timestamp) as pickup_datetime,
