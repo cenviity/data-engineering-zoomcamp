@@ -16,6 +16,7 @@ dbt-bigquery = "^1.7.6"
 sqlfluff = "^2.3.5"
 shandy-sqlfmt = {extras = ["jinja"], version = "^0.21.2"}
 sqlfluff-templater-dbt = "^2.3.5"
+pyspark = "^3.5.1"
 
 
 [tool.poetry.group.dev.dependencies]
