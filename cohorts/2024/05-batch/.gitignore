@@ -1,2 +1,4 @@
-taxi+_zone_lookup.csv
+*.csv
+derby.log
+metastore_db/
 zones/
