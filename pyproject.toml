@@ -17,6 +17,7 @@ sqlfluff = "^2.3.5"
 shandy-sqlfmt = {extras = ["jinja"], version = "^0.21.2"}
 sqlfluff-templater-dbt = "^2.3.5"
 pyspark = "^3.5.1"
+jupyter = "^1.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
