@@ -1,4 +1,5 @@
 *.csv
+code/fhvhv/
 derby.log
 metastore_db/
 zones/
