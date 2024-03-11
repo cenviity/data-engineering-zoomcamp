@@ -23,6 +23,9 @@ jupyter = "^1.0.0"
 [tool.poetry.group.dev.dependencies]
 pipdeptree = "^2.15.1"
 
+[tool.ruff]
+extend-include = ["*.ipynb"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
