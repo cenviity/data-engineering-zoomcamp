@@ -1,4 +1,5 @@
 *.csv
+code/data/
 code/fhvhv/
 derby.log
 metastore_db/
